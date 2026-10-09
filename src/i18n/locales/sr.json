@@ -1,0 +1,10 @@
+{
+  "app": { "name": "AgroTracker" },
+  "nav": {
+    "home": "Početna",
+    "parcels": "Parcele",
+    "costs": "Troškovi",
+    "income": "Prihodi",
+    "balance": "Bilans"
+  }
+}

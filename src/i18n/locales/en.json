@@ -1,0 +1,10 @@
+{
+  "app": { "name": "AgroTracker" },
+  "nav": {
+    "home": "Home",
+    "parcels": "Parcels",
+    "costs": "Costs",
+    "income": "Income",
+    "balance": "Balance"
+  }
+}
