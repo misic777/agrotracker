@@ -1,10 +1,89 @@
 {
-  "app": { "name": "AgroTracker" },
+  "app": {
+    "name": "AgroTracker",
+    "household": "Mišić family farm"
+  },
   "nav": {
+    "label": "Main menu",
     "home": "Home",
     "parcels": "Parcels",
     "costs": "Costs",
     "income": "Income",
     "balance": "Balance"
+  },
+  "layout": {
+    "export": "Export data (JSON)",
+    "language": "Language",
+    "saveFailed": "Saving data failed. Export your data (JSON) so you don't lose it."
+  },
+  "pages": {
+    "home": {
+      "subtitle": "Current season overview"
+    },
+    "parcels": {
+      "subtitle": "Parcels, seasons and activity log"
+    },
+    "parcel": {
+      "title": "Parcel",
+      "back": "Parcels"
+    },
+    "costs": {
+      "subtitle": "All farm costs, independent of parcels"
+    },
+    "income": {
+      "subtitle": "Sales, subsidies and other income"
+    },
+    "balance": {
+      "subtitle": "All amounts in dinars. Costs in euros are converted at the rate entered with each cost."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "text": "The address you opened doesn't lead anywhere.",
+      "back": "Back to home"
+    },
+    "comingSoon": "This page is under construction."
+  },
+  "activityType": {
+    "tillage": "Tillage",
+    "sowing": "Sowing",
+    "fertilizing": "Fertilizing",
+    "spraying": "Spraying",
+    "harvest": "Harvest",
+    "other": "Other"
+  },
+  "costType": {
+    "fuel": "Fuel",
+    "seed": "Seed",
+    "fertilizer": "Fertilizer",
+    "pesticide": "Crop protection",
+    "machineMaintenance": "Machine maintenance",
+    "services": "Services",
+    "rent": "Rent",
+    "other": "Other"
+  },
+  "incomeKind": {
+    "sale": "Sale",
+    "subsidy": "Subsidy",
+    "other": "Other"
+  },
+  "crop": {
+    "wheat": "Wheat",
+    "corn": "Corn",
+    "sunflower": "Sunflower",
+    "soybean": "Soybean",
+    "rapeseed": "Rapeseed",
+    "clover": "Clover",
+    "barley": "Barley",
+    "other": "Other"
+  },
+  "unit": {
+    "kg": "kg",
+    "l": "l",
+    "pcs": "pcs",
+    "kgPerHa": "kg/ha",
+    "lPerHa": "l/ha"
+  },
+  "errors": {
+    "duplicateParcel": "Parcel no. {{number}} in the {{municipality}} cadastral municipality already exists."
   }
 }

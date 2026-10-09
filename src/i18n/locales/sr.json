@@ -1,10 +1,89 @@
 {
-  "app": { "name": "AgroTracker" },
+  "app": {
+    "name": "AgroTracker",
+    "household": "Gazdinstvo Mišić"
+  },
   "nav": {
+    "label": "Glavni meni",
     "home": "Početna",
     "parcels": "Parcele",
     "costs": "Troškovi",
     "income": "Prihodi",
     "balance": "Bilans"
+  },
+  "layout": {
+    "export": "Izvezi podatke (JSON)",
+    "language": "Jezik",
+    "saveFailed": "Čuvanje podataka nije uspelo. Izvezi podatke (JSON) da ih ne izgubiš."
+  },
+  "pages": {
+    "home": {
+      "subtitle": "Pregled tekuće sezone"
+    },
+    "parcels": {
+      "subtitle": "Parcele, sezone i dnevnik aktivnosti"
+    },
+    "parcel": {
+      "title": "Parcela",
+      "back": "Parcele"
+    },
+    "costs": {
+      "subtitle": "Svi troškovi gazdinstva, nezavisno od parcela"
+    },
+    "income": {
+      "subtitle": "Prodaja, subvencije i ostali prihodi"
+    },
+    "balance": {
+      "subtitle": "Svi iznosi u dinarima. Troškovi u evrima su preračunati po kursu unetom uz trošak."
+    },
+    "notFound": {
+      "title": "Stranica ne postoji",
+      "text": "Adresa koju si otvorio ne vodi nigde.",
+      "back": "Nazad na početnu"
+    },
+    "comingSoon": "Ova stranica je u izradi."
+  },
+  "activityType": {
+    "tillage": "Obrada zemljišta",
+    "sowing": "Setva",
+    "fertilizing": "Đubrenje",
+    "spraying": "Prskanje",
+    "harvest": "Žetva",
+    "other": "Ostalo"
+  },
+  "costType": {
+    "fuel": "Nafta",
+    "seed": "Seme",
+    "fertilizer": "Đubrivo",
+    "pesticide": "Sredstva za prskanje",
+    "machineMaintenance": "Održavanje mašina",
+    "services": "Usluge",
+    "rent": "Kirije",
+    "other": "Ostalo"
+  },
+  "incomeKind": {
+    "sale": "Prodaja",
+    "subsidy": "Subvencija",
+    "other": "Ostalo"
+  },
+  "crop": {
+    "wheat": "Pšenica",
+    "corn": "Kukuruz",
+    "sunflower": "Suncokret",
+    "soybean": "Soja",
+    "rapeseed": "Uljana repica",
+    "clover": "Detelina",
+    "barley": "Ječam",
+    "other": "Ostalo"
+  },
+  "unit": {
+    "kg": "kg",
+    "l": "l",
+    "pcs": "kom",
+    "kgPerHa": "kg/ha",
+    "lPerHa": "l/ha"
+  },
+  "errors": {
+    "duplicateParcel": "Parcela br. {{number}} u k.o. {{municipality}} već postoji."
   }
 }

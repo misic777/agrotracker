@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+/* Design tokens from the AgroTracker design (Tokeni artboard). */
+@theme {
+  --color-sand-50: #fffcf6;
+  --color-sand-100: #f4efe4;
+  --color-sand-200: #ebe3d3;
+  --color-sand-300: #ddd1bc;
+
+  --color-leaf-50: #eef3e8;
+  --color-leaf-100: #e3ebd9;
+  --color-leaf-200: #cfddc1;
+  --color-leaf-600: #4e6b42;
+  --color-leaf-700: #3f5a35;
+  --color-leaf-800: #34492c;
+
+  --color-soil-100: #ebddcb;
+  --color-soil-400: #b88f68;
+  --color-soil-600: #5e4e3e;
+  --color-soil-700: #6a5847;
+  --color-soil-900: #33291f;
+
+  --color-wheat-200: #f2dfae;
+  --color-olive-100: #e4e4c6;
+  --color-sky-100: #dce7e9;
+
+  --font-display: "Bitter", Georgia, serif;
+  --font-sans: "Manrope", "Segoe UI", system-ui, sans-serif;
+
+  --radius-field: 8px;
+  --radius-btn: 10px;
+  --radius-card: 16px;
+}
+
+@layer base {
+  body {
+    @apply bg-sand-100 font-sans text-[15px] leading-normal text-soil-900;
+  }
+
+  a {
+    @apply text-leaf-600 hover:text-leaf-800;
+  }
+}
