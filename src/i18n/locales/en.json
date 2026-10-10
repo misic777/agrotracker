@@ -213,5 +213,59 @@
     "invalid": "Enter the number of kilograms, e.g. 46,200.",
     "historyTitle": "Yields by year",
     "historyEmpty": "No yields entered yet."
+  },
+  "costs": {
+    "add": "New cost",
+    "listLabel": "Cost list",
+    "year": "Year",
+    "type": "Type",
+    "allTypes": "All types",
+    "totalLabel": "Total {{year}}, in dinars",
+    "totalLabelType": "{{type}} {{year}}, in dinars",
+    "emptyAll": "No costs yet. Add the first one with “New cost”.",
+    "emptyFiltered": "No costs for the selected year ({{year}}) and type.",
+    "col": {
+      "date": "Date",
+      "type": "Type",
+      "description": "Description",
+      "quantity": "Quantity",
+      "unitPrice": "Unit price",
+      "total": "Total"
+    },
+    "converted": "{{rsd}} · rate {{rate}}",
+    "editAria": "Edit cost: {{description}}",
+    "showOlder_one": "Show older costs ({{count}})",
+    "showOlder_other": "Show older costs ({{count}})"
+  },
+  "costForm": {
+    "newTitle": "New cost",
+    "editTitle": "Edit cost",
+    "date": "Date",
+    "type": "Type",
+    "description": "Description",
+    "descriptionPlaceholder": "e.g. Wheat seed for autumn sowing",
+    "currency": "Currency",
+    "twoOfThree": "Enter any two of the three fields – the third is calculated.",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "unitPrice": "Price per unit ({{currency}})",
+    "total": "Total ({{currency}})",
+    "computed": "calculated",
+    "rate": "Exchange rate on payment date (RSD for €1)",
+    "rateHint": "Pre-filled with the last rate used ({{date}})",
+    "inRsd": "In dinars",
+    "save": "Save cost",
+    "dateRequired": "Enter a date.",
+    "descriptionRequired": "Enter a description.",
+    "amountRequired": "Enter the total, or two of the three fields (e.g. quantity and price).",
+    "numberInvalid": "Enter a number, e.g. 1,500 or 0.55.",
+    "rateInvalid": "Enter a rate greater than zero, e.g. 117.20.",
+    "deleteTitle": "Delete cost?",
+    "deleteMessage": "The cost “{{description}}” ({{amount}}) will be deleted."
+  },
+  "unitName": {
+    "kg": "kg",
+    "l": "litre",
+    "pcs": "piece"
   }
 }
