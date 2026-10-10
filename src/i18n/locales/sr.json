@@ -215,5 +215,60 @@
     "invalid": "Unesi broj kilograma, npr. 46.200.",
     "historyTitle": "Prinosi po godinama",
     "historyEmpty": "Još nema unetih prinosa."
+  },
+  "costs": {
+    "add": "Novi trošak",
+    "listLabel": "Lista troškova",
+    "year": "Godina",
+    "type": "Tip",
+    "allTypes": "Svi tipovi",
+    "totalLabel": "Ukupno {{year}}, u dinarima",
+    "totalLabelType": "{{type}} {{year}}, u dinarima",
+    "emptyAll": "Još nema troškova. Dodaj prvi preko dugmeta „Novi trošak“.",
+    "emptyFiltered": "Nema troškova za izabranu godinu ({{year}}) i tip.",
+    "col": {
+      "date": "Datum",
+      "type": "Tip",
+      "description": "Opis",
+      "quantity": "Količina",
+      "unitPrice": "Cena/jed.",
+      "total": "Ukupno"
+    },
+    "converted": "{{rsd}} · kurs {{rate}}",
+    "editAria": "Izmeni trošak: {{description}}",
+    "showOlder_one": "Prikaži starije troškove ({{count}})",
+    "showOlder_few": "Prikaži starije troškove ({{count}})",
+    "showOlder_other": "Prikaži starije troškove ({{count}})"
+  },
+  "costForm": {
+    "newTitle": "Novi trošak",
+    "editTitle": "Izmena troška",
+    "date": "Datum",
+    "type": "Tip",
+    "description": "Opis",
+    "descriptionPlaceholder": "npr. Seme pšenice za jesenju setvu",
+    "currency": "Valuta",
+    "twoOfThree": "Unesi bilo koja dva od tri polja – treće se računa.",
+    "quantity": "Količina",
+    "unit": "Jedinica",
+    "unitPrice": "Cena po jedinici ({{currency}})",
+    "total": "Ukupno ({{currency}})",
+    "computed": "izračunato",
+    "rate": "Kurs na dan plaćanja (RSD za 1 €)",
+    "rateHint": "Popunjeno poslednjim korišćenim kursom ({{date}})",
+    "inRsd": "U dinarima",
+    "save": "Sačuvaj trošak",
+    "dateRequired": "Unesi datum.",
+    "descriptionRequired": "Unesi opis troška.",
+    "amountRequired": "Unesi ukupan iznos, ili dva od tri polja (npr. količinu i cenu).",
+    "numberInvalid": "Unesi broj, npr. 1.500 ili 0,55.",
+    "rateInvalid": "Unesi kurs veći od nule, npr. 117,20.",
+    "deleteTitle": "Obrisati trošak?",
+    "deleteMessage": "Trošak „{{description}}“ ({{amount}}) biće obrisan."
+  },
+  "unitName": {
+    "kg": "kg",
+    "l": "litar",
+    "pcs": "komad"
   }
 }
