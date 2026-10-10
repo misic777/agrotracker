@@ -45,3 +45,13 @@ export function matchesParcelSearch(parcel: Parcel, query: string): boolean {
     normalizeKey(parcel.number).includes(q)
   );
 }
+
+/**
+ * Reuses the spelling of an already known municipality when the typed name
+ * only differs in case, spaces or diacritics ("pacir" -> "Pačir"), so the
+ * same municipality is never stored twice under different spellings.
+ */
+export function canonicalMunicipality(typed: string, known: string[]): string {
+  const key = normalizeKey(typed);
+  return known.find((m) => normalizeKey(m) === key) ?? typed.trim();
+}

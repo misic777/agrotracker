@@ -20,9 +20,20 @@
   --color-soil-700: #6a5847;
   --color-soil-900: #33291f;
 
+  --color-soil-800: #5e4632;
+
   --color-wheat-200: #f2dfae;
+  --color-wheat-800: #5c4515;
   --color-olive-100: #e4e4c6;
+  --color-olive-800: #4a4a1c;
   --color-sky-100: #dce7e9;
+  --color-sky-800: #2f4a50;
+
+  /* Errors and destructive actions (from the "Dodaj parcelu" screen). */
+  --color-clay-50: #f8e6dc;
+  --color-clay-200: #e7c2ae;
+  --color-clay-600: #a0522f;
+  --color-clay-800: #7a3a1e;
 
   --font-display: "Bitter", Georgia, serif;
   --font-sans: "Manrope", "Segoe UI", system-ui, sans-serif;
