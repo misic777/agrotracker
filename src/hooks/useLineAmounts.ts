@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { parseDecimal } from "../../lib/format";
-import { completeLine, toMinor } from "../../lib/money";
-import type { Money } from "../../lib/types";
+import { parseDecimal } from "../lib/format";
+import { completeLine, toMinor } from "../lib/money";
+import type { Money } from "../lib/types";
 
 export type LineField = "quantity" | "unitPrice" | "total";
 

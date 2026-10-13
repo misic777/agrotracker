@@ -21,7 +21,7 @@ export function filterCosts(
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
-/** Sum in dinars; EUR costs were converted when they were saved. */
+/** Sum in RSD; EUR costs were converted when they were saved. */
 export function sumRsd(items: { totalRsd: Money }[]): Money {
   return items.reduce((sum, c) => sum + c.totalRsd, 0);
 }
