@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { LANGUAGES } from "../i18n";
 import { downloadJson } from "../lib/exportJson";
 import { useData } from "../storage/DataContext";
+import ImportData from "./ImportData";
 import {
   ChartIcon,
   CoinIcon,
@@ -65,7 +66,7 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="flex flex-col gap-3 lg:mt-auto">
+      <div className="flex flex-col gap-2 lg:mt-auto">
         <button
           type="button"
           onClick={() => downloadJson(data)}
@@ -74,6 +75,7 @@ export default function Sidebar() {
           <DownloadIcon size={18} />
           {t("layout.export")}
         </button>
+        <ImportData />
 
         <div className="flex items-center justify-between gap-2 px-1.5">
           <span className="text-[13px] text-soil-600">

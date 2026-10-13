@@ -6,6 +6,7 @@ import Card from "../../components/Card";
 import ConfirmDialog from "../../components/ConfirmDialog";
 import { PencilIcon, PlusIcon, TrashIcon } from "../../components/icons";
 import NotFoundPage from "../../components/NotFoundPage";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { useFormat } from "../../lib/format";
 import {
   activitiesOfSeason,
@@ -35,6 +36,7 @@ export default function ParcelDetailPage() {
   const [dialog, setDialog] = useState<OpenDialog>(null);
 
   const parcel = data.parcels.find((p) => p.id === id);
+  useDocumentTitle(parcel?.name ?? t("pages.notFound.title"));
   if (!parcel) return <NotFoundPage />;
 
   const seasons = seasonsOfParcel(data.seasons, parcel.id);

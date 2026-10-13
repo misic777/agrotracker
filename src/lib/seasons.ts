@@ -1,4 +1,4 @@
-import type { Activity, Id, Season } from "./types";
+import type { Activity, Id, Parcel, Season } from "./types";
 
 /** Seasons of one parcel, newest year first. */
 export function seasonsOfParcel(seasons: Season[], parcelId: Id): Season[] {
@@ -33,4 +33,29 @@ export function latestActivity(activities: Activity[]): Activity | undefined {
 export function yieldPerHa(season: Season, areaHa: number): number | undefined {
   if (season.yieldKg === undefined || areaHa <= 0) return undefined;
   return season.yieldKg / areaHa;
+}
+
+/** An activity together with the season and parcel it belongs to. */
+export interface ActivityWithContext {
+  activity: Activity;
+  season: Season;
+  parcel: Parcel;
+}
+
+/** The latest activities across all parcels, newest first. */
+export function recentActivities(
+  data: { activities: Activity[]; seasons: Season[]; parcels: Parcel[] },
+  limit: number,
+): ActivityWithContext[] {
+  const seasons = new Map(data.seasons.map((s) => [s.id, s]));
+  const parcels = new Map(data.parcels.map((p) => [p.id, p]));
+  const rows: ActivityWithContext[] = [];
+  for (const activity of data.activities) {
+    const season = seasons.get(activity.seasonId);
+    const parcel = season && parcels.get(season.parcelId);
+    if (season && parcel) rows.push({ activity, season, parcel });
+  }
+  return rows
+    .sort((a, b) => b.activity.date.localeCompare(a.activity.date))
+    .slice(0, limit);
 }
