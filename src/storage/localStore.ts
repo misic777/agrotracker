@@ -70,3 +70,32 @@ export function backupCorrupted(raw: string): void {
     // Nothing more we can do.
   }
 }
+
+/**
+ * Reads an exported backup. Returns null when the file is not a valid
+ * AgroTracker export, so a wrong file can never replace the data.
+ */
+export function parseBackup(text: string): AppData | null {
+  try {
+    const value: unknown = JSON.parse(text);
+    if (!isAppData(value)) return null;
+    const lists = [
+      value.parcels,
+      value.seasons,
+      value.activities,
+      value.costs,
+      value.incomes,
+    ] as unknown[][];
+    const allHaveIds = lists.every((list) =>
+      list.every(
+        (item) =>
+          typeof item === "object" &&
+          item !== null &&
+          typeof (item as { id?: unknown }).id === "string",
+      ),
+    );
+    return allHaveIds ? value : null;
+  } catch {
+    return null;
+  }
+}

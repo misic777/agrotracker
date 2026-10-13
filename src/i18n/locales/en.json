@@ -330,5 +330,42 @@
     "compareAria": "{{year}}: income {{income}}, costs {{costs}}",
     "noData": "No costs or income entered for {{year}} yet.",
     "noArea": "The per-hectare view needs parcels with an area."
+  },
+  "home": {
+    "season": "Season {{year}}",
+    "overviewLabel": "Overview",
+    "totalArea": "Total area",
+    "municipalities_one": "in {{count}} cadastral municipality",
+    "municipalities_other": "in {{count}} cadastral municipalities",
+    "crops_one": "{{count}} crop in {{year}}",
+    "crops_other": "{{count}} crops in {{year}}",
+    "noSeasons": "No seasons for {{year}} yet.",
+    "currentBalance": "Current balance {{year}}",
+    "balanceNote": "Income {{income}} · Costs {{costs}}",
+    "recentTitle": "Latest activities",
+    "allParcels": "All parcels",
+    "noActivities": "No activities yet. Add them on a parcel's page.",
+    "welcomeTitle": "Welcome to AgroTracker",
+    "welcomeText": "Start with your parcels: enter a name, number, cadastral municipality and area. Then add seasons, field work, costs and income, and the balance is calculated for you.",
+    "welcomeAction": "Add your first parcel"
+  },
+  "import": {
+    "button": "Import data (JSON)",
+    "parcels_one": "{{count}} parcel",
+    "parcels_other": "{{count}} parcels",
+    "seasons_one": "{{count}} season",
+    "seasons_other": "{{count}} seasons",
+    "costs_one": "{{count}} cost",
+    "costs_other": "{{count}} costs",
+    "incomes_one": "{{count}} income entry",
+    "incomes_other": "{{count}} income entries",
+    "confirmTitle": "Replace all data?",
+    "confirmMessage": "Your current data ({{current}}) will be replaced with the data from the file ({{incoming}}). If you need your current data, export it first.",
+    "confirm": "Replace data",
+    "invalidTitle": "Invalid file",
+    "invalidText": "The selected file is not an AgroTracker export. Nothing was changed.",
+    "doneTitle": "Data imported",
+    "doneText": "All data from the file has been loaded.",
+    "ok": "OK"
   }
 }

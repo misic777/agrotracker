@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 interface PageHeaderProps {
   title: string;
@@ -12,6 +13,7 @@ export default function PageHeader({
   subtitle,
   actions,
 }: PageHeaderProps) {
+  useDocumentTitle(title);
   return (
     <header className="flex flex-wrap items-end justify-between gap-4">
       <div className="flex flex-col gap-1">
