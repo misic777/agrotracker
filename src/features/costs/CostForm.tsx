@@ -3,6 +3,7 @@ import type { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import Button, { IconButton } from "../../components/Button";
 import ConfirmDialog from "../../components/ConfirmDialog";
+import LineAmountInput from "../../components/LineAmountInput";
 import { Field } from "../../components/form";
 import { CloseIcon, TrashIcon } from "../../components/icons";
 import { inputClass } from "../../components/inputClass";
@@ -19,7 +20,7 @@ import {
   type QuantityUnit,
 } from "../../lib/types";
 import { useData } from "../../storage/DataContext";
-import { useLineAmounts, type LineField } from "./useLineAmounts";
+import { useLineAmounts, type LineField } from "../../hooks/useLineAmounts";
 
 interface CostFormProps {
   /** Cost to edit; omit to add a new one. */
@@ -123,44 +124,22 @@ export default function CostForm({ cost, onClose }: CostFormProps) {
 
   /** One of the three amount inputs; the computed one is styled green. */
   function amountInput(field: LineField, label: string) {
-    const computed = line.computed === field;
-    const value = computed
-      ? line.hasComputed
-        ? formatComputed(field)
-        : ""
-      : line.texts[field];
-    const invalid = line.invalid(field);
+    const computed = line.computed === field && line.hasComputed;
     return (
-      <div className="flex flex-col gap-1.5">
-        <div className="flex items-center justify-between gap-2">
-          <label htmlFor={`${id}-${field}`} className="text-[13px] font-bold">
-            {label}
-          </label>
-          {computed && line.hasComputed && (
-            <span className="rounded-full bg-leaf-200 px-2 py-0.5 text-xs font-bold text-leaf-800">
-              {t("costForm.computed")}
-            </span>
-          )}
-        </div>
-        <input
-          id={`${id}-${field}`}
-          value={value}
-          onChange={(e) => line.set(field, e.target.value)}
-          inputMode="decimal"
-          placeholder="0"
-          aria-invalid={invalid}
-          className={
-            computed && line.hasComputed
-              ? "min-h-11 rounded-field border border-dashed border-[#a9be97] bg-leaf-50 px-3 text-right font-extrabold text-leaf-800 tabular-nums"
-              : `${inputClass(invalid)} text-right tabular-nums`
-          }
-        />
-        {invalid && (
-          <span className="text-[13px] text-clay-800">
-            {t("costForm.numberInvalid")}
-          </span>
-        )}
-      </div>
+      <LineAmountInput
+        id={`${id}-${field}`}
+        label={label}
+        value={
+          line.computed === field
+            ? computed
+              ? formatComputed(field)
+              : ""
+            : line.texts[field]
+        }
+        computed={computed}
+        invalid={line.invalid(field)}
+        onChange={(text) => line.set(field, text)}
+      />
     );
   }
 
