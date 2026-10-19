@@ -28,8 +28,9 @@ English.
 - Tailwind CSS v4 (custom theme tokens)
 - React Router (HashRouter, so it works on GitHub Pages)
 - react-i18next (sr / en, including Serbian plural forms)
+- Vitest + Testing Library for unit tests
 - ESLint + Prettier
-- Deployed to GitHub Pages with GitHub Actions
+- Deployed to GitHub Pages with GitHub Actions (lint and tests must pass first)
 
 ## Architecture notes
 
@@ -50,6 +51,8 @@ npm install
 npm run dev      # local dev server
 npm run build    # type check + production build
 npm run lint
+npm test         # run the unit tests once
+npm run test:watch  # re-run tests on every save
 ```
 
 ## Roadmap
@@ -61,5 +64,6 @@ npm run lint
 - [x] Income
 - [x] Yearly balance and year comparison
 - [x] Home page
+- [x] Unit tests (Vitest) and CI checks
 - [ ] Supabase backend, Google sign-in and shared household
 - [ ] Installable app (PWA) and offline use
