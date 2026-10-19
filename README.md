@@ -43,6 +43,11 @@ English.
   at the moment it was saved.
 - The code stores fixed codes (`corn`, `spraying`...) and the UI translates
   them, so data does not depend on the language.
+- The database schema lives in `supabase/migrations/`. Every table has a
+  `household_id`, and Row Level Security lets a signed-in user reach only the
+  rows of their own household. `supabase/tests/rls.test.ts` checks these
+  rules against a real Postgres engine (PGlite), so they are tested on every
+  push without Docker or a live project.
 
 ## Getting started
 
@@ -53,6 +58,15 @@ npm run build    # type check + production build
 npm run lint
 npm test         # run the unit tests once
 npm run test:watch  # re-run tests on every save
+```
+
+Backend (Supabase): copy `.env.example` to `.env.local` and fill in the
+project URL and publishable key, then:
+
+```bash
+npm run check:supabase  # is the project reachable, is Google sign-in on?
+npm run db:push         # apply new migrations to the linked project
+npm run db:types        # regenerate TypeScript types from the schema
 ```
 
 ## Roadmap

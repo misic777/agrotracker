@@ -9,10 +9,14 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "check:supabase": "node --env-file=.env.local scripts/check-supabase.mjs",
+    "db:push": "npx --yes supabase@2.119.0 db push",
+    "db:types": "npx --yes supabase@2.119.0 gen types typescript --linked --schema public > src/storage/database.types.ts",
     "preview": "vite preview",
     "format": "prettier --write src"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
     "@tailwindcss/vite": "^4.3.3",
     "i18next": "^26.4.2",
     "react": "^19.2.8",
@@ -22,6 +26,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@eslint/js": "^10.0.1",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
