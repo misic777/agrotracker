@@ -1,7 +1,6 @@
 {
   "app": {
-    "name": "AgroTracker",
-    "household": "Gazdinstvo Mišić"
+    "name": "AgroTracker"
   },
   "nav": {
     "label": "Glavni meni",
@@ -14,7 +13,12 @@
   "layout": {
     "export": "Izvezi podatke (JSON)",
     "language": "Jezik",
-    "saveFailed": "Čuvanje podataka nije uspelo. Izvezi podatke (JSON) da ih ne izgubiš."
+    "saveFailed": "Čuvanje podataka nije uspelo. Izvezi podatke (JSON) da ih ne izgubiš.",
+    "signOut": "Odjavi se",
+    "household": "Gazdinstvo",
+    "demoMode": "Demo režim",
+    "exitDemo": "Izađi iz demoa",
+    "demoNote": "Demo: podaci se čuvaju samo u ovom pregledaču."
   },
   "pages": {
     "home": {
@@ -93,7 +97,9 @@
     "delete": "Obriši",
     "edit": "Izmeni",
     "optional": "(opciono)",
-    "none": "—"
+    "none": "—",
+    "loading": "Učitavanje…",
+    "saving": "Čuvanje…"
   },
   "parcels": {
     "count_one": "{{count}} parcela",
@@ -378,5 +384,67 @@
     "doneTitle": "Podaci su uvezeni",
     "doneText": "Svi podaci iz fajla su učitani.",
     "ok": "U redu"
+  },
+  "login": {
+    "title": "Prijava",
+    "tagline": "Parcele, radovi na njivi, troškovi i prihodi porodičnog gazdinstva na jednom mestu.",
+    "google": "Prijavi se preko Google naloga",
+    "redirecting": "Otvaram Google…",
+    "googleNote": "Podaci se čuvaju na serveru i dele sa članovima tvog gazdinstva.",
+    "or": "ili",
+    "demo": "Isprobaj demo",
+    "demoNote": "Bez prijave. Podaci ostaju samo u ovom pregledaču.",
+    "failed": "Prijava nije uspela",
+    "notConfigured": "Prijava nije podešena u ovoj verziji aplikacije. Demo radi i bez nje.",
+    "source": "Izvorni kod na GitHub-u"
+  },
+  "access": {
+    "errorTitle": "Ne mogu da učitam gazdinstvo",
+    "errorText": "Proveri internet vezu i pokušaj ponovo.",
+    "retry": "Pokušaj ponovo"
+  },
+  "household": {
+    "setup": {
+      "pageTitle": "Gazdinstvo",
+      "title": "Dobro došao, {{name}}",
+      "titleNoName": "Dobro došao",
+      "text": "Podaci se vode po gazdinstvu i dele sa svim njegovim članovima. Napravi novo gazdinstvo ili se pridruži postojećem kodom koji si dobio od člana porodice.",
+      "createTitle": "Novo gazdinstvo",
+      "createText": "Ti postaješ prvi član, a ostale pozivaš kodom.",
+      "nameLabel": "Naziv gazdinstva",
+      "namePlaceholder": "npr. Gazdinstvo Mišić",
+      "nameRequired": "Upiši naziv gazdinstva.",
+      "create": "Napravi gazdinstvo",
+      "joinTitle": "Pridruži se",
+      "joinText": "Upiši kod od 12 znakova koji ti je poslao član gazdinstva.",
+      "codeLabel": "Kod za poziv",
+      "codeInvalid": "Kod ima 12 znakova: brojeve i slova od A do F.",
+      "join": "Pridruži se",
+      "signedInAs": "Prijavljen si kao {{email}}."
+    },
+    "page": {
+      "subtitle": "Članovi gazdinstva i pozivanje novih",
+      "inviteTitle": "Pozovi člana porodice",
+      "inviteText": "Pošalji ovaj kod preko Vibera. Član se prijavi svojim Google nalogom, izabere „Pridruži se“ i upiše kod.",
+      "codeLabel": "Kod za poziv",
+      "copy": "Kopiraj kod",
+      "copied": "Kopirano",
+      "share": "Podeli",
+      "shareMessage": "Pridruži se našem gazdinstvu u AgroTracker-u: {{url}}\nKod za poziv: {{code}}",
+      "regenerate": "Napravi novi kod",
+      "regenerateHint": "Ako je kod otišao pogrešnoj osobi.",
+      "confirmTitle": "Napraviti novi kod?",
+      "confirmMessage": "Stari kod prestaje da važi. Ko je već član, ostaje u gazdinstvu.",
+      "membersTitle": "Članovi",
+      "you": "(ti)",
+      "memberSince": "član od {{date}}"
+    },
+    "errors": {
+      "invalid_code": "Ne postoji gazdinstvo sa tim kodom. Proveri da li je dobro prepisan ili zatraži novi.",
+      "already_member": "Već si član jednog gazdinstva.",
+      "not_signed_in": "Sesija je istekla. Prijavi se ponovo.",
+      "not_member": "Nisi član nijednog gazdinstva.",
+      "generic": "Nešto nije uspelo. Proveri internet vezu i pokušaj ponovo."
+    }
   }
 }
