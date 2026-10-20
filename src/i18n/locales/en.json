@@ -1,7 +1,6 @@
 {
   "app": {
-    "name": "AgroTracker",
-    "household": "Mišić family farm"
+    "name": "AgroTracker"
   },
   "nav": {
     "label": "Main menu",
@@ -14,7 +13,12 @@
   "layout": {
     "export": "Export data (JSON)",
     "language": "Language",
-    "saveFailed": "Saving data failed. Export your data (JSON) so you don't lose it."
+    "saveFailed": "Saving data failed. Export your data (JSON) so you don't lose it.",
+    "signOut": "Sign out",
+    "household": "Household",
+    "demoMode": "Demo mode",
+    "exitDemo": "Leave demo",
+    "demoNote": "Demo: data is kept only in this browser."
   },
   "pages": {
     "home": {
@@ -93,7 +97,9 @@
     "delete": "Delete",
     "edit": "Edit",
     "optional": "(optional)",
-    "none": "—"
+    "none": "—",
+    "loading": "Loading…",
+    "saving": "Saving…"
   },
   "parcels": {
     "count_one": "{{count}} parcel",
@@ -367,5 +373,67 @@
     "doneTitle": "Data imported",
     "doneText": "All data from the file has been loaded.",
     "ok": "OK"
+  },
+  "login": {
+    "title": "Sign in",
+    "tagline": "Parcels, field work, costs and income of a family farm in one place.",
+    "google": "Sign in with Google",
+    "redirecting": "Opening Google…",
+    "googleNote": "Data is stored on the server and shared with the members of your household.",
+    "or": "or",
+    "demo": "Try the demo",
+    "demoNote": "No sign-in. Data stays only in this browser.",
+    "failed": "Sign-in failed",
+    "notConfigured": "Sign-in is not set up in this build of the app. The demo works without it.",
+    "source": "Source code on GitHub"
+  },
+  "access": {
+    "errorTitle": "Can't load the household",
+    "errorText": "Check your internet connection and try again.",
+    "retry": "Try again"
+  },
+  "household": {
+    "setup": {
+      "pageTitle": "Household",
+      "title": "Welcome, {{name}}",
+      "titleNoName": "Welcome",
+      "text": "Data is kept per household and shared with all of its members. Create a new household, or join an existing one with the code a family member sent you.",
+      "createTitle": "New household",
+      "createText": "You become the first member and invite the others with a code.",
+      "nameLabel": "Household name",
+      "namePlaceholder": "e.g. Mišić family farm",
+      "nameRequired": "Enter a name for the household.",
+      "create": "Create household",
+      "joinTitle": "Join a household",
+      "joinText": "Enter the 12-character code a household member sent you.",
+      "codeLabel": "Invite code",
+      "codeInvalid": "The code has 12 characters: digits and the letters A to F.",
+      "join": "Join",
+      "signedInAs": "Signed in as {{email}}."
+    },
+    "page": {
+      "subtitle": "Household members and inviting new ones",
+      "inviteTitle": "Invite a family member",
+      "inviteText": "Send this code over Viber. They sign in with their Google account, choose “Join a household” and enter the code.",
+      "codeLabel": "Invite code",
+      "copy": "Copy code",
+      "copied": "Copied",
+      "share": "Share",
+      "shareMessage": "Join our household in AgroTracker: {{url}}\nInvite code: {{code}}",
+      "regenerate": "Create a new code",
+      "regenerateHint": "If the code was sent to the wrong person.",
+      "confirmTitle": "Create a new code?",
+      "confirmMessage": "The old code stops working. Existing members stay in the household.",
+      "membersTitle": "Members",
+      "you": "(you)",
+      "memberSince": "member since {{date}}"
+    },
+    "errors": {
+      "invalid_code": "No household has that code. Check that it was copied correctly, or ask for a new one.",
+      "already_member": "You are already a member of a household.",
+      "not_signed_in": "Your session has expired. Please sign in again.",
+      "not_member": "You are not a member of any household.",
+      "generic": "Something went wrong. Check your internet connection and try again."
+    }
   }
 }
