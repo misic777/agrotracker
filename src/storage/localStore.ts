@@ -1,13 +1,15 @@
 /**
- * The only place that knows where data lives.
+ * Data kept in the browser's localStorage.
  *
- * Phases 1–3 keep everything in the browser's localStorage. In phase 4 this
- * module is replaced by a Supabase version with the same functions, and no
- * component has to change.
+ * Two keys are used: the demo's sample farm, and the data from before
+ * sign-in existed (offered for upload to the household after signing in).
  */
 import type { AppData } from "../lib/types";
 
-const STORAGE_KEY = "agrotracker.data";
+/** Data entered before accounts existed (phases 1–3). */
+export const LEGACY_DATA_KEY = "agrotracker.data";
+/** The demo's sample farm and the visitor's changes to it. */
+export const DEMO_DATA_KEY = "agrotracker.demoData";
 
 export function emptyData(): AppData {
   return {
@@ -39,10 +41,10 @@ export type LoadResult =
   | { status: "empty"; data: AppData }
   | { status: "corrupted"; data: AppData; raw: string };
 
-export function loadData(): LoadResult {
+export function loadData(key: string = LEGACY_DATA_KEY): LoadResult {
   let raw: string | null;
   try {
-    raw = localStorage.getItem(STORAGE_KEY);
+    raw = localStorage.getItem(key);
   } catch {
     return { status: "empty", data: emptyData() };
   }
@@ -58,14 +60,26 @@ export function loadData(): LoadResult {
   return { status: "corrupted", data: emptyData(), raw };
 }
 
-export function saveData(data: AppData): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+export function saveData(data: AppData, key: string = LEGACY_DATA_KEY): void {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+/** Forgets the data stored under a key (e.g. when leaving the demo). */
+export function clearData(key: string): void {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // Nothing stored, or storage blocked: nothing to clear.
+  }
 }
 
 /** Copies an unreadable stored value to a backup key before it is overwritten. */
-export function backupCorrupted(raw: string): void {
+export function backupCorrupted(
+  raw: string,
+  key: string = LEGACY_DATA_KEY,
+): void {
   try {
-    localStorage.setItem(`${STORAGE_KEY}.backup-${Date.now()}`, raw);
+    localStorage.setItem(`${key}.backup-${Date.now()}`, raw);
   } catch {
     // Nothing more we can do.
   }

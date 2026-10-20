@@ -16,11 +16,23 @@ import {
 } from "./operations";
 import type { SaveError } from "./remoteStore";
 
-/** Data kept in this browser's localStorage. Used by the demo. */
-export function LocalDataProvider({ children }: { children: ReactNode }) {
+/**
+ * Data kept in this browser's localStorage, under `storageKey`. Used by the
+ * demo. `createInitial` fills an empty store (the demo's sample farm).
+ */
+export function LocalDataProvider({
+  storageKey,
+  createInitial,
+  children,
+}: {
+  storageKey: string;
+  createInitial?: () => AppData;
+  children: ReactNode;
+}) {
   const [data, setData] = useState<AppData>(() => {
-    const result = loadData();
-    if (result.status === "corrupted") backupCorrupted(result.raw);
+    const result = loadData(storageKey);
+    if (result.status === "corrupted") backupCorrupted(result.raw, storageKey);
+    if (result.status !== "ok" && createInitial) return createInitial();
     return result.data;
   });
   const [saveError, setSaveError] = useState<SaveError | null>(null);
@@ -30,17 +42,20 @@ export function LocalDataProvider({ children }: { children: ReactNode }) {
   const dataRef = useRef(data);
 
   /** Every change goes through here: update state, then persist it. */
-  const commit = useCallback((next: AppData) => {
-    dataRef.current = next;
-    setData(next);
-    try {
-      saveData(next);
-      setSaveError(null);
-    } catch (error) {
-      console.error("Saving data failed", error);
-      setSaveError("storage");
-    }
-  }, []);
+  const commit = useCallback(
+    (next: AppData) => {
+      dataRef.current = next;
+      setData(next);
+      try {
+        saveData(next, storageKey);
+        setSaveError(null);
+      } catch (error) {
+        console.error("Saving data failed", error);
+        setSaveError("storage");
+      }
+    },
+    [storageKey],
+  );
 
   /** Read only inside actions (event handlers), never while rendering. */
   const current = useCallback(() => dataRef.current, []);

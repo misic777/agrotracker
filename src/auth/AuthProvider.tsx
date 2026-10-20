@@ -2,6 +2,7 @@ import type { Session } from "@supabase/supabase-js";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
+import { clearData, DEMO_DATA_KEY } from "../storage/localStore";
 import { supabase } from "../storage/supabaseClient";
 import {
   AuthContext,
@@ -95,17 +96,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const startDemo = useCallback(() => {
+    // Always a fresh sample farm, in the language selected right now.
+    clearData(DEMO_DATA_KEY);
     writeDemoFlag(true);
     setDemo(true);
   }, []);
 
   const signOut = useCallback(async () => {
+    if (demo) clearData(DEMO_DATA_KEY);
     writeDemoFlag(false);
     setDemo(false);
     if (supabase && session) await supabase.auth.signOut();
     // Forget everything loaded for this account.
     queryClient.clear();
-  }, [queryClient, session]);
+  }, [demo, queryClient, session]);
 
   const value = useMemo<AuthContextValue>(() => {
     const user = toAppUser(session);

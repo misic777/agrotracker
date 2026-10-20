@@ -14,16 +14,32 @@ export const INTL_LOCALE: Record<Language, string> = {
   en: "en-GB",
 };
 
-function readStoredLanguage(): Language {
+/** Languages close enough to Serbian that the Serbian UI is the better fit. */
+const SERBIAN_LIKE = ["sr", "hr", "bs", "sh", "cnr", "me"];
+
+/**
+ * First visit: Serbian for browsers set to Serbian or a close language,
+ * English for everyone else (e.g. recruiters abroad).
+ */
+export function detectLanguage(browserLanguages: readonly string[]): Language {
+  const serbian = browserLanguages.some((tag) =>
+    SERBIAN_LIKE.includes(tag.toLowerCase().split("-")[0]),
+  );
+  return serbian || browserLanguages.length === 0 ? "sr" : "en";
+}
+
+function initialLanguage(): Language {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored && (LANGUAGES as readonly string[]).includes(stored)) {
       return stored as Language;
     }
   } catch {
-    // localStorage can be unavailable (private mode); fall back to Serbian.
+    // localStorage can be unavailable (private mode).
   }
-  return "sr";
+  return detectLanguage(
+    typeof navigator === "undefined" ? [] : (navigator.languages ?? []),
+  );
 }
 
 export function currentLanguage(): Language {
@@ -34,7 +50,7 @@ export function currentLanguage(): Language {
 
 i18n.use(initReactI18next).init({
   resources: { sr: { translation: sr }, en: { translation: en } },
-  lng: readStoredLanguage(),
+  lng: initialLanguage(),
   fallbackLng: "sr",
   interpolation: { escapeValue: false },
 });

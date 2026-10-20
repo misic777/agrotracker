@@ -21,6 +21,10 @@ English.
   comparison across years.
 - **Home page**: overview of the current season and the latest activities.
 - **Backup**: export all data to JSON, and import it again.
+- **Accounts**: Google sign-in; family members share one household and join
+  it with an invite code.
+- **Demo**: try the app without an account on a made-up sample farm, in
+  Serbian or English. Changes stay in the visitor's browser.
 
 ## Tech stack
 
