@@ -365,6 +365,7 @@ export type Database = {
         }
       }
       regenerate_invite_code: { Args: never; Returns: string }
+      replace_household_data: { Args: { payload: Json }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never

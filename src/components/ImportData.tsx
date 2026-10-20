@@ -27,13 +27,15 @@ function useSummary() {
  */
 export default function ImportData() {
   const { t } = useTranslation();
-  const { data, replaceAll } = useData();
+  const { data, mode, replaceAll } = useData();
   const summary = useSummary();
   const fileInput = useRef<HTMLInputElement>(null);
 
   const [pending, setPending] = useState<AppData | null>(null);
-  const [invalid, setInvalid] = useState(false);
-  const [done, setDone] = useState(false);
+  /** The result dialog shown after choosing a file. */
+  const [result, setResult] = useState<
+    "invalid" | "working" | "done" | "failed" | null
+  >(null);
 
   async function handleFile(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -41,7 +43,7 @@ export default function ImportData() {
     if (!file) return;
     const backup = parseBackup(await file.text());
     if (backup) setPending(backup);
-    else setInvalid(true);
+    else setResult("invalid");
   }
 
   return (
@@ -66,44 +68,45 @@ export default function ImportData() {
       {pending && (
         <ConfirmDialog
           title={t("import.confirmTitle")}
-          message={t("import.confirmMessage", {
-            current: summary(data),
-            incoming: summary(pending),
-          })}
+          message={
+            t("import.confirmMessage", {
+              current: summary(data),
+              incoming: summary(pending),
+            }) + (mode === "online" ? ` ${t("import.onlineNote")}` : "")
+          }
           confirmLabel={t("import.confirm")}
           onClose={() => setPending(null)}
           onConfirm={() => {
-            replaceAll(pending);
-            setDone(true);
+            setResult("working");
+            replaceAll(pending).then(
+              () => setResult("done"),
+              (error) => {
+                console.error("Import failed", error);
+                setResult("failed");
+              },
+            );
           }}
         />
       )}
 
-      {(invalid || done) && (
+      {result && (
         <Dialog
-          title={invalid ? t("import.invalidTitle") : t("import.doneTitle")}
+          title={t(`import.${result}Title`)}
           size="sm"
           onClose={() => {
-            setInvalid(false);
-            setDone(false);
+            if (result !== "working") setResult(null);
           }}
         >
           <DialogBody>
-            <p className="m-0">
-              {invalid ? t("import.invalidText") : t("import.doneText")}
-            </p>
+            <p className="m-0">{t(`import.${result}Text`)}</p>
           </DialogBody>
-          <DialogFooter>
-            <Button
-              variant="primary"
-              onClick={() => {
-                setInvalid(false);
-                setDone(false);
-              }}
-            >
-              {t("import.ok")}
-            </Button>
-          </DialogFooter>
+          {result !== "working" && (
+            <DialogFooter>
+              <Button variant="primary" onClick={() => setResult(null)}>
+                {t("import.ok")}
+              </Button>
+            </DialogFooter>
+          )}
         </Dialog>
       )}
     </>
