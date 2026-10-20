@@ -9,6 +9,7 @@ import type {
   Parcel,
   Season,
 } from "../lib/types";
+import type { SaveError } from "./remoteStore";
 
 /** Result of saving a parcel: blocked when number + municipality already exist. */
 export type ParcelSaveResult =
@@ -24,8 +25,11 @@ export interface Crud<T extends { id: Id }> {
 
 export interface DataContextValue {
   data: AppData;
-  /** True when the last save to the browser failed (e.g. storage full). */
-  saveFailed: boolean;
+  /** Where the data lives: this browser (demo) or the household's database. */
+  mode: "local" | "online";
+  /** Why the last save failed, until the next successful one. */
+  saveError: SaveError | null;
+  dismissSaveError: () => void;
   parcels: {
     add: (draft: Draft<Parcel>) => ParcelSaveResult;
     update: (id: Id, draft: Draft<Parcel>) => ParcelSaveResult;
@@ -37,8 +41,11 @@ export interface DataContextValue {
   activities: Crud<Activity>;
   costs: Crud<Cost>;
   incomes: Crud<Income>;
-  /** Replaces all data, e.g. when importing a backup. */
-  replaceAll: (data: AppData) => void;
+  /**
+   * Replaces all data, e.g. when importing a backup. Online it is one
+   * database transaction; the promise rejects if it failed.
+   */
+  replaceAll: (data: AppData) => Promise<void>;
 }
 
 export const DataContext = createContext<DataContextValue | null>(null);

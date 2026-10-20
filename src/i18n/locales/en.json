@@ -13,12 +13,17 @@
   "layout": {
     "export": "Export data (JSON)",
     "language": "Language",
-    "saveFailed": "Saving data failed. Export your data (JSON) so you don't lose it.",
     "signOut": "Sign out",
     "household": "Household",
     "demoMode": "Demo mode",
     "exitDemo": "Leave demo",
-    "demoNote": "Demo: data is kept only in this browser."
+    "demoNote": "Demo: data is kept only in this browser.",
+    "saveError": {
+      "storage": "Saving data in the browser failed. Export the data (JSON) so you don't lose it.",
+      "duplicate": "The change was not saved: a parcel with that number already exists in that municipality, maybe another member just added it. Showing the data from the server.",
+      "network": "The change was not saved because there is no internet connection. Showing the data from the server; repeat the change when you are back online.",
+      "generic": "The change was not saved on the server. Showing the data from the server, so check your last change."
+    }
   },
   "pages": {
     "home": {
@@ -372,7 +377,12 @@
     "invalidText": "The selected file is not an AgroTracker export. Nothing was changed.",
     "doneTitle": "Data imported",
     "doneText": "All data from the file has been loaded.",
-    "ok": "OK"
+    "ok": "OK",
+    "onlineNote": "This changes the data of the whole household, for all members.",
+    "workingTitle": "Importing",
+    "workingText": "Sending the data to the server…",
+    "failedTitle": "Import failed",
+    "failedText": "Nothing was changed. Check your internet connection and try again."
   },
   "login": {
     "title": "Sign in",

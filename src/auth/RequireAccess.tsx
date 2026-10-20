@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { LoadErrorScreen, LoadingScreen } from "../components/FullPageMessage";
 import { useHousehold } from "../features/household/household";
+import { DataProvider } from "../storage/DataProvider";
 import { decideAccess } from "./access";
 import { useAuth } from "./AuthContext";
 
@@ -24,6 +25,10 @@ export default function RequireAccess() {
         />
       );
     case "allow":
-      return <Outlet />;
+      return (
+        <DataProvider>
+          <Outlet />
+        </DataProvider>
+      );
   }
 }

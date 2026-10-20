@@ -367,3 +367,83 @@ describe("data rules", () => {
     expect(r.error).toMatch(/check constraint/);
   });
 });
+
+describe("replace_household_data", () => {
+  const payload = (crop: string) =>
+    JSON.stringify({
+      parcels: [
+        {
+          id: "11111111-0000-4000-8000-000000000001",
+          name: "Uvezena",
+          number: "900",
+          municipality: "Pačir",
+          area_ha: 3.5,
+        },
+      ],
+      seasons: [
+        {
+          id: "22222222-0000-4000-8000-000000000001",
+          parcel_id: "11111111-0000-4000-8000-000000000001",
+          year: 2026,
+          crop,
+        },
+      ],
+      activities: [],
+      costs: [
+        {
+          id: "33333333-0000-4000-8000-000000000001",
+          date: "2026-05-01",
+          type: "fuel",
+          currency: "RSD",
+          total: 500,
+          total_rsd: 500,
+        },
+      ],
+      incomes: [],
+    });
+
+  it("replaces all of the household's data", async () => {
+    const r = await as(
+      ANDRIJA,
+      "select public.replace_household_data($1::jsonb)",
+      [payload("corn")],
+    );
+    expect(r.error).toBeUndefined();
+    const parcels = await as(ANDRIJA, "select name from public.parcels");
+    expect(parcels.rows).toEqual([{ name: "Uvezena" }]);
+    const costs = await as(ANDRIJA, "select total from public.costs");
+    expect(costs.rows).toHaveLength(1);
+  });
+
+  it("changes nothing when any part is invalid", async () => {
+    const r = await as(
+      ANDRIJA,
+      "select public.replace_household_data($1::jsonb)",
+      [payload("banana")],
+    );
+    expect(r.error).toMatch(/check constraint/);
+    const parcels = await as(ANDRIJA, "select name from public.parcels");
+    expect(parcels.rows).toEqual([{ name: "Uvezena" }]);
+  });
+
+  it("only touches the caller's own household", async () => {
+    await as(STRANGER, insertParcel("1", "Komšijska"));
+    expect(await countAll("parcels", "municipality = 'Komšijska'")).toBe(1);
+    await as(STRANGER, "select public.replace_household_data('{}'::jsonb)");
+    expect(await countAll("parcels", "municipality = 'Komšijska'")).toBe(0);
+    expect((await as(ANDRIJA, "select name from public.parcels")).rows).toEqual(
+      [{ name: "Uvezena" }],
+    );
+  });
+
+  it("refuses users without a household and visitors", async () => {
+    expect(
+      (await as(DAD, "select public.replace_household_data('{}'::jsonb)"))
+        .error,
+    ).toBe("not_member");
+    expect(
+      (await as("anon", "select public.replace_household_data('{}'::jsonb)"))
+        .error,
+    ).toMatch(/permission denied/);
+  });
+});

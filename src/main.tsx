@@ -6,7 +6,6 @@ import { AuthProvider } from "./auth/AuthProvider.tsx";
 import "./i18n";
 import "./index.css";
 import App from "./App.tsx";
-import { DataProvider } from "./storage/DataProvider.tsx";
 
 /** Cache for data loaded from Supabase (see TanStack Query). */
 const queryClient = new QueryClient({
@@ -24,9 +23,7 @@ createRoot(document.getElementById("root")!).render(
     <HashRouter>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <DataProvider>
-            <App />
-          </DataProvider>
+          <App />
         </AuthProvider>
       </QueryClientProvider>
     </HashRouter>

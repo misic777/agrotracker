@@ -13,12 +13,17 @@
   "layout": {
     "export": "Izvezi podatke (JSON)",
     "language": "Jezik",
-    "saveFailed": "Čuvanje podataka nije uspelo. Izvezi podatke (JSON) da ih ne izgubiš.",
     "signOut": "Odjavi se",
     "household": "Gazdinstvo",
     "demoMode": "Demo režim",
     "exitDemo": "Izađi iz demoa",
-    "demoNote": "Demo: podaci se čuvaju samo u ovom pregledaču."
+    "demoNote": "Demo: podaci se čuvaju samo u ovom pregledaču.",
+    "saveError": {
+      "storage": "Čuvanje podataka u pregledaču nije uspelo. Izvezi podatke (JSON) da ih ne izgubiš.",
+      "duplicate": "Promena nije sačuvana: parcela sa tim brojem već postoji u toj katastarskoj opštini, možda ju je upravo dodao drugi član. Prikazani su podaci sa servera.",
+      "network": "Promena nije sačuvana jer nema internet veze. Prikazani su podaci sa servera; ponovi izmenu kad se veza vrati.",
+      "generic": "Promena nije sačuvana na serveru. Prikazani su podaci sa servera, pa proveri poslednju izmenu."
+    }
   },
   "pages": {
     "home": {
@@ -383,7 +388,12 @@
     "invalidText": "Izabrani fajl nije izvoz iz AgroTracker-a. Podaci nisu promenjeni.",
     "doneTitle": "Podaci su uvezeni",
     "doneText": "Svi podaci iz fajla su učitani.",
-    "ok": "U redu"
+    "ok": "U redu",
+    "onlineNote": "Ovo menja podatke celog gazdinstva, za sve članove.",
+    "workingTitle": "Uvoz u toku",
+    "workingText": "Podaci se šalju na server…",
+    "failedTitle": "Uvoz nije uspeo",
+    "failedText": "Ništa nije promenjeno. Proveri internet vezu i pokušaj ponovo."
   },
   "login": {
     "title": "Prijava",

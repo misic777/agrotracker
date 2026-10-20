@@ -27,6 +27,7 @@ English.
 - React 19 + TypeScript, built with Vite
 - Tailwind CSS v4 (custom theme tokens)
 - React Router (HashRouter, so it works on GitHub Pages)
+- Supabase (Postgres, Google sign-in, Row Level Security) and TanStack Query
 - react-i18next (sr / en, including Serbian plural forms)
 - Vitest + Testing Library for unit tests
 - ESLint + Prettier
@@ -34,10 +35,17 @@ English.
 
 ## Architecture notes
 
-- All data access goes through `src/storage/`. For now
-  `localStore.ts` keeps everything in the browser's localStorage; it is the
-  only file that knows about it, so it can be swapped for a real backend
-  later without touching the pages.
+- Pages read and change data only through `useData()`. Behind it,
+  `src/storage/` has two providers: the demo keeps data in the browser's
+  localStorage, and signed-in users work on their household's data in
+  Supabase. The pages don't know which one they are talking to.
+- Online changes are optimistic: the screen updates immediately and the
+  change is sent in the background (TanStack Query). Writes run one after
+  another, and once they finish the data is reloaded, so a rejected change is
+  replaced by what the server has and an error is shown.
+- Importing a backup replaces the household's data in a single database
+  transaction (`replace_household_data`), so it is applied fully or not at
+  all.
 - Money is stored as whole numbers in minor units (para / cents) to avoid
   floating point errors. Each cost and income also stores its value in RSD
   at the moment it was saved.
