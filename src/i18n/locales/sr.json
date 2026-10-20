@@ -403,7 +403,7 @@
     "googleNote": "Podaci se čuvaju na serveru i dele sa članovima tvog gazdinstva.",
     "or": "ili",
     "demo": "Isprobaj demo",
-    "demoNote": "Bez prijave. Podaci ostaju samo u ovom pregledaču.",
+    "demoNote": "Primer gazdinstva sa izmišljenim podacima, na izabranom jeziku. Izmene ostaju samo u ovom pregledaču.",
     "failed": "Prijava nije uspela",
     "notConfigured": "Prijava nije podešena u ovoj verziji aplikacije. Demo radi i bez nje.",
     "source": "Izvorni kod na GitHub-u"
@@ -456,5 +456,10 @@
       "not_member": "Nisi član nijednog gazdinstva.",
       "generic": "Nešto nije uspelo. Proveri internet vezu i pokušaj ponovo."
     }
+  },
+  "demo": {
+    "bannerTitle": "Demo sa izmišljenim gazdinstvom.",
+    "bannerText": "Slobodno menjaj podatke, ostaju samo u ovom pregledaču.",
+    "signIn": "Napusti demo i prijavi se"
   }
 }

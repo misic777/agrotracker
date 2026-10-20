@@ -392,7 +392,7 @@
     "googleNote": "Data is stored on the server and shared with the members of your household.",
     "or": "or",
     "demo": "Try the demo",
-    "demoNote": "No sign-in. Data stays only in this browser.",
+    "demoNote": "A sample farm with made-up data, in the selected language. Changes stay only in this browser.",
     "failed": "Sign-in failed",
     "notConfigured": "Sign-in is not set up in this build of the app. The demo works without it.",
     "source": "Source code on GitHub"
@@ -445,5 +445,10 @@
       "not_member": "You are not a member of any household.",
       "generic": "Something went wrong. Check your internet connection and try again."
     }
+  },
+  "demo": {
+    "bannerTitle": "Demo with a made-up farm.",
+    "bannerText": "Feel free to change anything, it stays only in this browser.",
+    "signIn": "Leave the demo and sign in"
   }
 }
